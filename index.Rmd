@@ -1,0 +1,21 @@
+---
+title: "Simple Web Page Presentation"
+author: "KF"
+date: "9/3/2020"
+output: ioslides_presentation
+---
+
+```{r setup, echo=FALSE, error = FALSE, warning = FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+data(mtcars)
+names <- rownames(mtcars)
+```
+
+## MTCARS Horsepower vs. Quarter Mile Time
+
+```{r plot, echo=FALSE, error = FALSE, warning = FALSE, message=FALSE}
+plot_ly(mtcars, x=~hp, y=~qsec, type = "scatter", size=4, text=names, mode = "markers", color = ~as.factor(cyl)) %>% 
+      layout(title="HP vs. Quarter Mile Time", xaxis=list(title="Horsepower", zeroline=TRUE), yaxis=list(title="Quarter Mile Time (sec)", zeroline=TRUE), legend=list(title=list(text='<b> Cylinders </b>')))
+```
+
